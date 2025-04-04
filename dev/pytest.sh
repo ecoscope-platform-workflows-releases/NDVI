@@ -14,5 +14,5 @@ pixi update --manifest-path $manifest_path
 
 # run the test
 pixi run --manifest-path $manifest_path --locked -e test $pixi_task \
-    --case all-grouper \
+    --case value-grouper \
     $flags

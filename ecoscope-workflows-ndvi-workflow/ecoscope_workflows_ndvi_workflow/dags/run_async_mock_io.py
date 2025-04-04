@@ -8,16 +8,32 @@ that they would not be included (or would be different) in the production versio
 """
 
 import json
+import os
 import warnings  # 🧪
+from ecoscope_workflows_core.testing import create_task_magicmock  # 🧪
 
 
 from ecoscope_workflows_core.graph import DependsOn, Graph, Node
 
 from ecoscope_workflows_core.tasks.config import set_workflow_details
+from ecoscope_workflows_core.tasks.io import set_gee_connection
 from ecoscope_workflows_core.tasks.filter import set_time_range
 from ecoscope_workflows_core.tasks.groupby import set_groupers
-from ecoscope_workflows_core.tasks.analysis import apply_arithmetic_operation
-from ecoscope_workflows_core.tasks.results import create_single_value_widget_single_view
+
+download_roi = create_task_magicmock(  # 🧪
+    anchor="ecoscope_workflows_ext_ecoscope.tasks.io",  # 🧪
+    func_name="download_roi",  # 🧪
+)  # 🧪
+from ecoscope_workflows_core.tasks.groupby import split_groups
+
+calculate_ndvi_range = create_task_magicmock(  # 🧪
+    anchor="ecoscope_workflows_ext_ecoscope.tasks.io",  # 🧪
+    func_name="calculate_ndvi_range",  # 🧪
+)  # 🧪
+from ecoscope_workflows_ext_ecoscope.tasks.results import draw_historic_timeseries
+from ecoscope_workflows_core.tasks.io import persist_text
+from ecoscope_workflows_core.tasks.results import create_plot_widget_single_view
+from ecoscope_workflows_core.tasks.results import merge_widget_views
 from ecoscope_workflows_core.tasks.results import gather_dashboard
 
 from ..params import Params
@@ -30,13 +46,19 @@ def main(params: Params):
 
     dependencies = {
         "workflow_details": [],
+        "gee_client": [],
         "time_range": [],
         "groupers": [],
-        "calculator": [],
-        "sv_widgets": ["calculator"],
-        "patrol_dashboard": [
+        "roi": [],
+        "split_roi_groups": ["roi", "groupers"],
+        "calculate_ndvi": ["gee_client", "time_range", "split_roi_groups"],
+        "draw_ndvi": ["calculate_ndvi"],
+        "persist_ndvi": ["draw_ndvi"],
+        "ndvi_chart_widget": ["persist_ndvi"],
+        "grouped_ndvi_widget": ["ndvi_chart_widget"],
+        "ndvi_dashboard": [
             "workflow_details",
-            "sv_widgets",
+            "grouped_ndvi_widget",
             "time_range",
             "groupers",
         ],
@@ -48,6 +70,13 @@ def main(params: Params):
             .handle_errors(task_instance_id="workflow_details")
             .set_executor("lithops"),
             partial=(params_dict.get("workflow_details") or {}),
+            method="call",
+        ),
+        "gee_client": Node(
+            async_task=set_gee_connection.validate()
+            .handle_errors(task_instance_id="gee_client")
+            .set_executor("lithops"),
+            partial=(params_dict.get("gee_client") or {}),
             method="call",
         ),
         "time_range": Node(
@@ -67,36 +96,107 @@ def main(params: Params):
             partial=(params_dict.get("groupers") or {}),
             method="call",
         ),
-        "calculator": Node(
-            async_task=apply_arithmetic_operation.validate()
-            .handle_errors(task_instance_id="calculator")
+        "roi": Node(
+            async_task=download_roi.validate()
+            .handle_errors(task_instance_id="roi")
             .set_executor("lithops"),
-            partial=(params_dict.get("calculator") or {}),
+            partial=(params_dict.get("roi") or {}),
             method="call",
         ),
-        "sv_widgets": Node(
-            async_task=create_single_value_widget_single_view.validate()
-            .handle_errors(task_instance_id="sv_widgets")
+        "split_roi_groups": Node(
+            async_task=split_groups.validate()
+            .handle_errors(task_instance_id="split_roi_groups")
             .set_executor("lithops"),
             partial={
-                "title": "Sum",
-                "decimal_places": 0,
-                "data": DependsOn("calculator"),
+                "df": DependsOn("roi"),
+                "groupers": DependsOn("groupers"),
             }
-            | (params_dict.get("sv_widgets") or {}),
+            | (params_dict.get("split_roi_groups") or {}),
             method="call",
         ),
-        "patrol_dashboard": Node(
+        "calculate_ndvi": Node(
+            async_task=calculate_ndvi_range.validate()
+            .handle_errors(task_instance_id="calculate_ndvi")
+            .set_executor("lithops"),
+            partial={
+                "client": DependsOn("gee_client"),
+                "time_range": DependsOn("time_range"),
+                "img_coll_name": "MODIS/061/MYD13A1",
+            }
+            | (params_dict.get("calculate_ndvi") or {}),
+            method="mapvalues",
+            kwargs={
+                "argnames": ["roi"],
+                "argvalues": DependsOn("split_roi_groups"),
+            },
+        ),
+        "draw_ndvi": Node(
+            async_task=draw_historic_timeseries.validate()
+            .handle_errors(task_instance_id="draw_ndvi")
+            .set_executor("lithops"),
+            partial={
+                "current_value_column": "NDVI",
+                "current_value_title": "NDVI",
+                "historic_min_column": "min",
+                "historic_max_column": "max",
+                "historic_mean_column": "mean",
+            }
+            | (params_dict.get("draw_ndvi") or {}),
+            method="mapvalues",
+            kwargs={
+                "argnames": ["dataframe"],
+                "argvalues": DependsOn("calculate_ndvi"),
+            },
+        ),
+        "persist_ndvi": Node(
+            async_task=persist_text.validate()
+            .handle_errors(task_instance_id="persist_ndvi")
+            .set_executor("lithops"),
+            partial={
+                "root_path": os.environ["ECOSCOPE_WORKFLOWS_RESULTS"],
+            }
+            | (params_dict.get("persist_ndvi") or {}),
+            method="mapvalues",
+            kwargs={
+                "argnames": ["text"],
+                "argvalues": DependsOn("draw_ndvi"),
+            },
+        ),
+        "ndvi_chart_widget": Node(
+            async_task=create_plot_widget_single_view.validate()
+            .handle_errors(task_instance_id="ndvi_chart_widget")
+            .set_executor("lithops"),
+            partial={
+                "title": "NDVI Trends",
+            }
+            | (params_dict.get("ndvi_chart_widget") or {}),
+            method="map",
+            kwargs={
+                "argnames": ["view", "data"],
+                "argvalues": DependsOn("persist_ndvi"),
+            },
+        ),
+        "grouped_ndvi_widget": Node(
+            async_task=merge_widget_views.validate()
+            .handle_errors(task_instance_id="grouped_ndvi_widget")
+            .set_executor("lithops"),
+            partial={
+                "widgets": DependsOn("ndvi_chart_widget"),
+            }
+            | (params_dict.get("grouped_ndvi_widget") or {}),
+            method="call",
+        ),
+        "ndvi_dashboard": Node(
             async_task=gather_dashboard.validate()
-            .handle_errors(task_instance_id="patrol_dashboard")
+            .handle_errors(task_instance_id="ndvi_dashboard")
             .set_executor("lithops"),
             partial={
                 "details": DependsOn("workflow_details"),
-                "widgets": DependsOn("sv_widgets"),
+                "widgets": DependsOn("grouped_ndvi_widget"),
                 "time_range": DependsOn("time_range"),
                 "groupers": DependsOn("groupers"),
             }
-            | (params_dict.get("patrol_dashboard") or {}),
+            | (params_dict.get("ndvi_dashboard") or {}),
             method="call",
         ),
     }

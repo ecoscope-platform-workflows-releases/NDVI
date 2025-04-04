@@ -86,9 +86,9 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/dbus-1.13.6-h5008d03_3.tar.bz2
       - conda: https://conda.anaconda.org/conda-forge/noarch/decorator-5.2.1-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/dnspython-2.7.0-pyhff2d567_1.conda
-      - conda: https://conda.anaconda.org/conda-forge/noarch/earthengine-api-1.4.5-pyhd8ed1ab_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/earthengine-api-1.5.9-pyhd8ed1ab_0.conda
       - conda: https://repo.prefix.dev/ecoscope-workflows/noarch/earthranger-client-1.0.49-pyh4616a5c_0.conda
-      - conda: https://repo.prefix.dev/ecoscope-workflows/noarch/ecoscope-v1.8.30-pyh4616a5c_5.conda
+      - conda: https://repo.prefix.dev/ecoscope-workflows/noarch/ecoscope-v1.8.32-pyh4616a5c_5.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/email-validator-2.2.0-pyhd8ed1ab_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/email_validator-2.2.0-hd8ed1ab_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/epoxy-1.5.10-h166bdaf_1.tar.bz2
@@ -447,8 +447,8 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/zlib-ng-2.2.4-h7955e40_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/zstandard-0.23.0-py312h66e93f0_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/zstd-1.5.7-hb8e6e7a_2.conda
-      - conda: /tmp/ecoscope-workflows/release/artifacts/noarch/ecoscope-workflows-core-0.0.67.dev1+g8fdcfc9d-pyh4616a5c_0.conda
-      - conda: /tmp/ecoscope-workflows/release/artifacts/noarch/ecoscope-workflows-ext-ecoscope-0.0.67.dev1+g8fdcfc9d-pyh4616a5c_0.conda
+      - conda: /tmp/ecoscope-workflows/release/artifacts/noarch/ecoscope-workflows-core-0.0.68.dev1+g5cdc46a4.d20250404-pyh4616a5c_0.conda
+      - conda: /tmp/ecoscope-workflows/release/artifacts/noarch/ecoscope-workflows-ext-ecoscope-0.0.68.dev1+g5cdc46a4.d20250404-pyh4616a5c_0.conda
       linux-aarch64:
       - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/_openmp_mutex-4.5-2_gnu.tar.bz2
       - conda: https://conda.anaconda.org/conda-forge/noarch/adwaita-icon-theme-48.0-unix_0.conda
@@ -527,9 +527,9 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/dbus-1.13.6-h12b9eeb_3.tar.bz2
       - conda: https://conda.anaconda.org/conda-forge/noarch/decorator-5.2.1-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/dnspython-2.7.0-pyhff2d567_1.conda
-      - conda: https://conda.anaconda.org/conda-forge/noarch/earthengine-api-1.4.5-pyhd8ed1ab_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/earthengine-api-1.5.9-pyhd8ed1ab_0.conda
       - conda: https://repo.prefix.dev/ecoscope-workflows/noarch/earthranger-client-1.0.49-pyh4616a5c_0.conda
-      - conda: https://repo.prefix.dev/ecoscope-workflows/noarch/ecoscope-v1.8.30-pyh4616a5c_5.conda
+      - conda: https://repo.prefix.dev/ecoscope-workflows/noarch/ecoscope-v1.8.32-pyh4616a5c_5.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/email-validator-2.2.0-pyhd8ed1ab_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/email_validator-2.2.0-hd8ed1ab_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/epoxy-1.5.10-h4e544f5_1.tar.bz2
@@ -888,8 +888,8 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/zlib-ng-2.2.4-hf428078_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/zstandard-0.23.0-py312hb2c0f52_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/zstd-1.5.7-hbcf94c1_2.conda
-      - conda: /tmp/ecoscope-workflows/release/artifacts/noarch/ecoscope-workflows-core-0.0.67.dev1+g8fdcfc9d-pyh4616a5c_0.conda
-      - conda: /tmp/ecoscope-workflows/release/artifacts/noarch/ecoscope-workflows-ext-ecoscope-0.0.67.dev1+g8fdcfc9d-pyh4616a5c_0.conda
+      - conda: /tmp/ecoscope-workflows/release/artifacts/noarch/ecoscope-workflows-core-0.0.68.dev1+g5cdc46a4.d20250404-pyh4616a5c_0.conda
+      - conda: /tmp/ecoscope-workflows/release/artifacts/noarch/ecoscope-workflows-ext-ecoscope-0.0.68.dev1+g5cdc46a4.d20250404-pyh4616a5c_0.conda
       osx-arm64:
       - conda: https://conda.anaconda.org/conda-forge/noarch/adwaita-icon-theme-48.0-unix_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/affine-2.4.0-pyhd8ed1ab_1.conda
@@ -964,9 +964,9 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/dav1d-1.2.1-hb547adb_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/decorator-5.2.1-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/dnspython-2.7.0-pyhff2d567_1.conda
-      - conda: https://conda.anaconda.org/conda-forge/noarch/earthengine-api-1.4.5-pyhd8ed1ab_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/earthengine-api-1.5.9-pyhd8ed1ab_0.conda
       - conda: https://repo.prefix.dev/ecoscope-workflows/noarch/earthranger-client-1.0.49-pyh4616a5c_0.conda
-      - conda: https://repo.prefix.dev/ecoscope-workflows/noarch/ecoscope-v1.8.30-pyh4616a5c_5.conda
+      - conda: https://repo.prefix.dev/ecoscope-workflows/noarch/ecoscope-v1.8.32-pyh4616a5c_5.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/email-validator-2.2.0-pyhd8ed1ab_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/email_validator-2.2.0-hd8ed1ab_1.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/epoxy-1.5.10-h1c322ee_1.tar.bz2
@@ -1299,8 +1299,8 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zlib-ng-2.2.4-h13dfb9a_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zstandard-0.23.0-py312hea69d52_1.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zstd-1.5.7-h6491c7d_2.conda
-      - conda: /tmp/ecoscope-workflows/release/artifacts/noarch/ecoscope-workflows-core-0.0.67.dev1+g8fdcfc9d-pyh4616a5c_0.conda
-      - conda: /tmp/ecoscope-workflows/release/artifacts/noarch/ecoscope-workflows-ext-ecoscope-0.0.67.dev1+g8fdcfc9d-pyh4616a5c_0.conda
+      - conda: /tmp/ecoscope-workflows/release/artifacts/noarch/ecoscope-workflows-core-0.0.68.dev1+g5cdc46a4.d20250404-pyh4616a5c_0.conda
+      - conda: /tmp/ecoscope-workflows/release/artifacts/noarch/ecoscope-workflows-ext-ecoscope-0.0.68.dev1+g5cdc46a4.d20250404-pyh4616a5c_0.conda
   test:
     channels:
     - url: file:///tmp/ecoscope-workflows/release/artifacts/
@@ -1387,9 +1387,9 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/dbus-1.13.6-h5008d03_3.tar.bz2
       - conda: https://conda.anaconda.org/conda-forge/noarch/decorator-5.2.1-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/dnspython-2.7.0-pyhff2d567_1.conda
-      - conda: https://conda.anaconda.org/conda-forge/noarch/earthengine-api-1.4.5-pyhd8ed1ab_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/earthengine-api-1.5.9-pyhd8ed1ab_0.conda
       - conda: https://repo.prefix.dev/ecoscope-workflows/noarch/earthranger-client-1.0.49-pyh4616a5c_0.conda
-      - conda: https://repo.prefix.dev/ecoscope-workflows/noarch/ecoscope-v1.8.30-pyh4616a5c_5.conda
+      - conda: https://repo.prefix.dev/ecoscope-workflows/noarch/ecoscope-v1.8.32-pyh4616a5c_5.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/email-validator-2.2.0-pyhd8ed1ab_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/email_validator-2.2.0-hd8ed1ab_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/epoxy-1.5.10-h166bdaf_1.tar.bz2
@@ -1648,7 +1648,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/pysocks-1.7.1-pyha55dd90_7.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pytest-8.3.5-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pytest-asyncio-0.26.0-pyh29332c3_0.conda
-      - conda: https://conda.anaconda.org/conda-forge/noarch/pytest-check-2.5.2-pyhd8ed1ab_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/pytest-check-2.5.3-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/python-3.12.9-h9e4cc4f_1_cpython.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/python-dateutil-2.9.0.post0-pyhff2d567_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/python-dotenv-1.1.0-pyh29332c3_1.conda
@@ -1757,8 +1757,8 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/zlib-ng-2.2.4-h7955e40_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/zstandard-0.23.0-py312h66e93f0_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/zstd-1.5.7-hb8e6e7a_2.conda
-      - conda: /tmp/ecoscope-workflows/release/artifacts/noarch/ecoscope-workflows-core-0.0.67.dev1+g8fdcfc9d-pyh4616a5c_0.conda
-      - conda: /tmp/ecoscope-workflows/release/artifacts/noarch/ecoscope-workflows-ext-ecoscope-0.0.67.dev1+g8fdcfc9d-pyh4616a5c_0.conda
+      - conda: /tmp/ecoscope-workflows/release/artifacts/noarch/ecoscope-workflows-core-0.0.68.dev1+g5cdc46a4.d20250404-pyh4616a5c_0.conda
+      - conda: /tmp/ecoscope-workflows/release/artifacts/noarch/ecoscope-workflows-ext-ecoscope-0.0.68.dev1+g5cdc46a4.d20250404-pyh4616a5c_0.conda
       linux-aarch64:
       - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/_openmp_mutex-4.5-2_gnu.tar.bz2
       - conda: https://conda.anaconda.org/conda-forge/noarch/adwaita-icon-theme-48.0-unix_0.conda
@@ -1837,9 +1837,9 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/dbus-1.13.6-h12b9eeb_3.tar.bz2
       - conda: https://conda.anaconda.org/conda-forge/noarch/decorator-5.2.1-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/dnspython-2.7.0-pyhff2d567_1.conda
-      - conda: https://conda.anaconda.org/conda-forge/noarch/earthengine-api-1.4.5-pyhd8ed1ab_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/earthengine-api-1.5.9-pyhd8ed1ab_0.conda
       - conda: https://repo.prefix.dev/ecoscope-workflows/noarch/earthranger-client-1.0.49-pyh4616a5c_0.conda
-      - conda: https://repo.prefix.dev/ecoscope-workflows/noarch/ecoscope-v1.8.30-pyh4616a5c_5.conda
+      - conda: https://repo.prefix.dev/ecoscope-workflows/noarch/ecoscope-v1.8.32-pyh4616a5c_5.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/email-validator-2.2.0-pyhd8ed1ab_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/email_validator-2.2.0-hd8ed1ab_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/epoxy-1.5.10-h4e544f5_1.tar.bz2
@@ -2098,7 +2098,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/pysocks-1.7.1-pyha55dd90_7.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pytest-8.3.5-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pytest-asyncio-0.26.0-pyh29332c3_0.conda
-      - conda: https://conda.anaconda.org/conda-forge/noarch/pytest-check-2.5.2-pyhd8ed1ab_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/pytest-check-2.5.3-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/python-3.12.9-h1683364_1_cpython.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/python-dateutil-2.9.0.post0-pyhff2d567_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/python-dotenv-1.1.0-pyh29332c3_1.conda
@@ -2207,8 +2207,8 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/zlib-ng-2.2.4-hf428078_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/zstandard-0.23.0-py312hb2c0f52_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/zstd-1.5.7-hbcf94c1_2.conda
-      - conda: /tmp/ecoscope-workflows/release/artifacts/noarch/ecoscope-workflows-core-0.0.67.dev1+g8fdcfc9d-pyh4616a5c_0.conda
-      - conda: /tmp/ecoscope-workflows/release/artifacts/noarch/ecoscope-workflows-ext-ecoscope-0.0.67.dev1+g8fdcfc9d-pyh4616a5c_0.conda
+      - conda: /tmp/ecoscope-workflows/release/artifacts/noarch/ecoscope-workflows-core-0.0.68.dev1+g5cdc46a4.d20250404-pyh4616a5c_0.conda
+      - conda: /tmp/ecoscope-workflows/release/artifacts/noarch/ecoscope-workflows-ext-ecoscope-0.0.68.dev1+g5cdc46a4.d20250404-pyh4616a5c_0.conda
       osx-arm64:
       - conda: https://conda.anaconda.org/conda-forge/noarch/adwaita-icon-theme-48.0-unix_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/affine-2.4.0-pyhd8ed1ab_1.conda
@@ -2283,9 +2283,9 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/dav1d-1.2.1-hb547adb_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/decorator-5.2.1-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/dnspython-2.7.0-pyhff2d567_1.conda
-      - conda: https://conda.anaconda.org/conda-forge/noarch/earthengine-api-1.4.5-pyhd8ed1ab_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/earthengine-api-1.5.9-pyhd8ed1ab_0.conda
       - conda: https://repo.prefix.dev/ecoscope-workflows/noarch/earthranger-client-1.0.49-pyh4616a5c_0.conda
-      - conda: https://repo.prefix.dev/ecoscope-workflows/noarch/ecoscope-v1.8.30-pyh4616a5c_5.conda
+      - conda: https://repo.prefix.dev/ecoscope-workflows/noarch/ecoscope-v1.8.32-pyh4616a5c_5.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/email-validator-2.2.0-pyhd8ed1ab_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/email_validator-2.2.0-hd8ed1ab_1.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/epoxy-1.5.10-h1c322ee_1.tar.bz2
@@ -2534,7 +2534,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/pysocks-1.7.1-pyha55dd90_7.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pytest-8.3.5-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pytest-asyncio-0.26.0-pyh29332c3_0.conda
-      - conda: https://conda.anaconda.org/conda-forge/noarch/pytest-check-2.5.2-pyhd8ed1ab_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/pytest-check-2.5.3-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/python-3.12.9-hc22306f_1_cpython.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/python-dateutil-2.9.0.post0-pyhff2d567_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/python-dotenv-1.1.0-pyh29332c3_1.conda
@@ -2627,8 +2627,8 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zlib-ng-2.2.4-h13dfb9a_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zstandard-0.23.0-py312hea69d52_1.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zstd-1.5.7-h6491c7d_2.conda
-      - conda: /tmp/ecoscope-workflows/release/artifacts/noarch/ecoscope-workflows-core-0.0.67.dev1+g8fdcfc9d-pyh4616a5c_0.conda
-      - conda: /tmp/ecoscope-workflows/release/artifacts/noarch/ecoscope-workflows-ext-ecoscope-0.0.67.dev1+g8fdcfc9d-pyh4616a5c_0.conda
+      - conda: /tmp/ecoscope-workflows/release/artifacts/noarch/ecoscope-workflows-core-0.0.68.dev1+g5cdc46a4.d20250404-pyh4616a5c_0.conda
+      - conda: /tmp/ecoscope-workflows/release/artifacts/noarch/ecoscope-workflows-ext-ecoscope-0.0.68.dev1+g5cdc46a4.d20250404-pyh4616a5c_0.conda
 packages:
 - conda: https://conda.anaconda.org/conda-forge/linux-64/_libgcc_mutex-0.1-conda_forge.tar.bz2
   sha256: fe51de6107f9edc7aa4f786a70f4a883943bc9d39b3bb7307c04c41410990726
@@ -4940,9 +4940,9 @@ packages:
   license_family: OTHER
   size: 172172
   timestamp: 1733256829961
-- conda: https://conda.anaconda.org/conda-forge/noarch/earthengine-api-1.4.5-pyhd8ed1ab_0.conda
-  sha256: 6ff464134d6602771f7975f5fbbb1e38989a41191a8d28ae0dd4c0bc56d77581
-  md5: 136572f63e43c94622ea169c1c7997c2
+- conda: https://conda.anaconda.org/conda-forge/noarch/earthengine-api-1.5.9-pyhd8ed1ab_0.conda
+  sha256: 0aa78c82cc7b846402fe1ea7864a2436553fca9ffaf6e3cd46c6af410ae1b367
+  md5: 5722e7263ae78632d8cf9a76bedc169c
   depends:
   - google-api-python-client >=1.12.1
   - google-auth >=1.4.1
@@ -4953,8 +4953,8 @@ packages:
   - requests
   license: Apache-2.0
   license_family: APACHE
-  size: 313398
-  timestamp: 1736879703371
+  size: 315282
+  timestamp: 1743485144053
 - conda: https://repo.prefix.dev/ecoscope-workflows/noarch/earthranger-client-1.0.49-pyh4616a5c_0.conda
   sha256: 9a3ac6384aafd7610a35b2a4c81413187ca9e886d364d955f0df54d1574a52d6
   depends:
@@ -4968,12 +4968,12 @@ packages:
   license: Apache-2.0
   size: 25300
   timestamp: 1725938421487
-- conda: https://repo.prefix.dev/ecoscope-workflows/noarch/ecoscope-v1.8.30-pyh4616a5c_5.conda
-  sha256: bdf97a81dd74809d8e86c1730169b20ad18e57da879583c6cb631c62bfe2395c
+- conda: https://repo.prefix.dev/ecoscope-workflows/noarch/ecoscope-v1.8.32-pyh4616a5c_5.conda
+  sha256: 03c5039929de7e410855b22aaa0a74130ef5babd3e4f353face287a453bb91b3
   depends:
   - python
   - backoff
-  - earthengine-api <=1.4.5
+  - earthengine-api
   - earthranger-client
   - fiona <1.10.0
   - geopandas <=0.14.2
@@ -4994,12 +4994,12 @@ packages:
   - lonboard ==0.0.3
   - python
   license: BSD-3-Clause
-  size: 66462
-  timestamp: 1742806209107
-- conda: /tmp/ecoscope-workflows/release/artifacts/noarch/ecoscope-workflows-core-0.0.67.dev1+g8fdcfc9d-pyh4616a5c_0.conda
+  size: 66449
+  timestamp: 1743070657918
+- conda: /tmp/ecoscope-workflows/release/artifacts/noarch/ecoscope-workflows-core-0.0.68.dev1+g5cdc46a4.d20250404-pyh4616a5c_0.conda
   subdir: noarch
-  sha256: 793c8d0d3495e2ebf59ceff4903ab74a6e694644d12fdb72a11f33ba2f31a5e1
-  md5: 71203091714311abc7fab0ee3febcf71
+  sha256: 842625977c7bead0ced453f1b0a8a218403ba3c01e666840f01b255401c590c4
+  md5: f4932b0e905809f424d484bb6e783c71
   depends:
   - python
   - jinja2
@@ -5017,22 +5017,22 @@ packages:
   - python
   channel: file:///tmp/ecoscope-workflows/release/artifacts
   license: BSD-3-Clause
-  size: 63787
-  timestamp: 1743662285632
-- conda: /tmp/ecoscope-workflows/release/artifacts/noarch/ecoscope-workflows-ext-ecoscope-0.0.67.dev1+g8fdcfc9d-pyh4616a5c_0.conda
+  size: 64600
+  timestamp: 1743763502277
+- conda: /tmp/ecoscope-workflows/release/artifacts/noarch/ecoscope-workflows-ext-ecoscope-0.0.68.dev1+g5cdc46a4.d20250404-pyh4616a5c_0.conda
   subdir: noarch
-  sha256: 27b4575ea82a7389580b1047af3b42dd0c49c0fc1b8a34a1ec4eb41215d2719a
-  md5: f157f7b9d11f9cfab54cdef6175e2bb0
+  sha256: e2194c2b9c5e052d576ff625d5a874f1bd47eedc3eea1b5d32944eca87be1a20
+  md5: 9b4778dbc2800be20ec47eedd0ffb9d7
   depends:
   - python
-  - ecoscope-workflows-core ==0.0.67.dev1+g8fdcfc9d
-  - ecoscope ==v1.8.30
+  - ecoscope-workflows-core ==0.0.68.dev1+g5cdc46a4.d20250404
+  - ecoscope ==v1.8.32
   - rtree <1.4
   - python
   channel: file:///tmp/ecoscope-workflows/release/artifacts
   license: BSD-3-Clause
-  size: 3112587
-  timestamp: 1743662451867
+  size: 3118922
+  timestamp: 1743763624785
 - conda: https://conda.anaconda.org/conda-forge/noarch/email-validator-2.2.0-pyhd8ed1ab_1.conda
   sha256: b91a19eb78edfc2dbb36de9a67f74ee2416f1b5273dd7327abe53f2dbf864736
   md5: da16dd3b0b71339060cd44cb7110ddf9
@@ -13292,17 +13292,16 @@ packages:
   license_family: APACHE
   size: 44876
   timestamp: 1742911666053
-- conda: https://conda.anaconda.org/conda-forge/noarch/pytest-check-2.5.2-pyhd8ed1ab_0.conda
-  sha256: 8adf6e143b0ccc1733064076e39d6aabd981b27402ff96cdf628b14b63b6d84a
-  md5: cfce039adc4af4c4f63db0c1d1c8115b
+- conda: https://conda.anaconda.org/conda-forge/noarch/pytest-check-2.5.3-pyhd8ed1ab_0.conda
+  sha256: e39d50abdac1a4066c4d3f0046a9c03bcce361e736477f1a32909f62a0408993
+  md5: b5609ae4a49066c28f2fd8697d027f4b
   depends:
   - pytest
   - python >=3.9
   - typing-extensions >=4.12.2
   license: MIT
-  license_family: MIT
-  size: 30001
-  timestamp: 1743326076665
+  size: 29990
+  timestamp: 1743755153253
 - conda: https://conda.anaconda.org/conda-forge/linux-64/python-3.12.9-h9e4cc4f_1_cpython.conda
   build_number: 1
   sha256: 77f2073889d4c91a57bc0da73a0466d9164dbcf6191ea9c3a7be6872f784d625

@@ -3,7 +3,6 @@
 
 from __future__ import annotations
 
-from enum import Enum
 from typing import List, Optional, Union
 
 from pydantic import AwareDatetime, BaseModel, ConfigDict, Field, RootModel
@@ -25,27 +24,32 @@ class TimeRange(BaseModel):
     until: AwareDatetime = Field(..., description="The end time", title="Until")
 
 
-class Operation(str, Enum):
-    add = "add"
-    subtract = "subtract"
-    multiply = "multiply"
-    divide = "divide"
-    floor_divide = "floor_divide"
-    modulo = "modulo"
-    power = "power"
-    min = "min"
-    max = "max"
-
-
-class Calculator(BaseModel):
+class Roi(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
     )
-    a: Union[float, int] = Field(..., description="The first number", title="A")
-    b: Union[float, int] = Field(..., description="The second number", title="B")
-    operation: Operation = Field(
-        ..., description="The arithmetic operation to apply", title="Operation"
+    url: str = Field(..., description="The path to ROI gpkg file", title="Url")
+    roi_name: Optional[str] = Field(None, description="The ROI name", title="Roi Name")
+    layer_name: Optional[str] = Field(
+        None, description="The layer name", title="Layer Name"
     )
+
+
+class CalculateNdvi(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+    )
+    band: Optional[str] = Field("NDVI", description="The band name", title="Band")
+    scale_factor: Optional[float] = Field(
+        0.0001, description="The scale factor", title="Scale Factor"
+    )
+    analysis_scale: Optional[float] = Field(
+        500.0, description="The analysis scale", title="Analysis Scale"
+    )
+
+
+class GoogleEarthEngineConnection(BaseModel):
+    name: str = Field(..., title="Data Source")
 
 
 class TemporalGrouper(RootModel[str]):
@@ -54,6 +58,47 @@ class TemporalGrouper(RootModel[str]):
 
 class ValueGrouper(RootModel[str]):
     root: str = Field(..., title="Category")
+
+
+class AxisStyle(BaseModel):
+    title: Optional[str] = Field(None, title="Title")
+    range: Optional[List[float]] = Field(None, title="Range")
+
+
+class LayoutStyle(BaseModel):
+    font_color: Optional[str] = Field(None, title="Font Color")
+    font_style: Optional[str] = Field(None, title="Font Style")
+    plot_bgcolor: Optional[str] = Field(None, title="Plot Bgcolor")
+    showlegend: Optional[bool] = Field(None, title="Showlegend")
+    title: Optional[str] = Field(None, title="Title")
+    title_x: Optional[float] = Field(None, title="Title X")
+    title_y: Optional[float] = Field(None, title="Title Y")
+    xaxis: Optional[AxisStyle] = Field(None, title="Xaxis")
+    yaxis: Optional[AxisStyle] = Field(None, title="Yaxis")
+
+
+class LineStyle(BaseModel):
+    color: Optional[str] = Field(None, title="Color")
+    dash: Optional[str] = Field(None, title="Dash")
+
+
+class PlotStyle(BaseModel):
+    xperiodalignment: Optional[str] = Field(None, title="Xperiodalignment")
+    marker_colors: Optional[List[str]] = Field(None, title="Marker Colors")
+    textinfo: Optional[str] = Field(None, title="Textinfo")
+    line: Optional[LineStyle] = Field(None, title="Line")
+    fillcolor: Optional[str] = Field(None, title="Fillcolor")
+    mode: Optional[str] = Field(None, title="Mode")
+    name: Optional[str] = Field(None, title="Name")
+
+
+class GeeClient(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+    )
+    data_source: GoogleEarthEngineConnection = Field(
+        ..., description="Select one of your configured data sources.", title=""
+    )
 
 
 class Groupers(BaseModel):
@@ -67,6 +112,43 @@ class Groupers(BaseModel):
     )
 
 
+class DrawNdvi(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+    )
+    historic_band_title: Optional[str] = Field(
+        "Historic Min-Max",
+        description="The title shown in the plot legend for historic band",
+        title="Historic Band Title",
+    )
+    historic_mean_title: Optional[str] = Field(
+        "Historic Mean",
+        description="The title shown in the plot legend for historic mean values",
+        title="Historic Mean Title",
+    )
+    layout_style: Optional[LayoutStyle] = Field(
+        None,
+        description="Additional kwargs passed to plotly.go.Figure(layout).",
+        title="Layout Style",
+    )
+    upper_lower_band_style: Optional[PlotStyle] = Field(
+        None,
+        description="Additional kwargs for upper_lower_band passed to plotly.graph_objects.Scatter.",
+        title="Upper Lower Band Style",
+    )
+    historic_mean_style: Optional[PlotStyle] = Field(
+        None,
+        description="Additional kwargs passed for historic_mean to plotly.graph_objects.Scatter.",
+        title="Historic Mean Style",
+    )
+    current_value_style: Optional[PlotStyle] = Field(
+        None,
+        description="Additional kwargs for current_value passed to plotly.graph_objects.Scatter.",
+        title="Current Value Style",
+    )
+    time_column: Optional[str] = Field("img_date", title="Time Column")
+
+
 class Params(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -76,8 +158,13 @@ class Params(BaseModel):
         description="Add information that will help to differentiate this workflow from another.",
         title="Set Workflow Details",
     )
+    gee_client: Optional[GeeClient] = Field(
+        None, title="Select Google Earth Engine Data Source"
+    )
     time_range: Optional[TimeRange] = Field(
         None, description="Choose the period of time to analyze.", title="Time Range"
     )
     groupers: Optional[Groupers] = Field(None, title="Set Groupers")
-    calculator: Optional[Calculator] = Field(None, title="Calculate Task")
+    roi: Optional[Roi] = Field(None, title="Load ROI")
+    calculate_ndvi: Optional[CalculateNdvi] = Field(None, title="Calculate NDVI")
+    draw_ndvi: Optional[DrawNdvi] = Field(None, title="Draw NDVI")

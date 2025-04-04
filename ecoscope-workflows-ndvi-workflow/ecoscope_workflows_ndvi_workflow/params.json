@@ -20,6 +20,21 @@
       "description": "Add information that will help to differentiate this workflow from another.",
       "title": "Set Workflow Details"
     },
+    "gee_client": {
+      "additionalProperties": false,
+      "properties": {
+        "data_source": {
+          "$ref": "#/$defs/GoogleEarthEngineConnection",
+          "title": "",
+          "description": "Select one of your configured data sources."
+        }
+      },
+      "required": [
+        "data_source"
+      ],
+      "type": "object",
+      "title": "Select Google Earth Engine Data Source"
+    },
     "time_range": {
       "additionalProperties": false,
       "properties": {
@@ -69,60 +84,157 @@
       "required": [],
       "title": "Set Groupers"
     },
-    "calculator": {
+    "roi": {
       "additionalProperties": false,
       "properties": {
-        "a": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "integer"
-            }
-          ],
-          "title": "A",
-          "description": "The first number"
-        },
-        "b": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "integer"
-            }
-          ],
-          "title": "B",
-          "description": "The second number"
-        },
-        "operation": {
-          "enum": [
-            "add",
-            "subtract",
-            "multiply",
-            "divide",
-            "floor_divide",
-            "modulo",
-            "power",
-            "min",
-            "max"
-          ],
-          "title": "Operation",
+        "url": {
+          "title": "Url",
           "type": "string",
-          "description": "The arithmetic operation to apply"
+          "description": "The path to ROI gpkg file"
+        },
+        "roi_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Roi Name",
+          "description": "The ROI name"
+        },
+        "layer_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Layer Name",
+          "description": "The layer name"
         }
       },
       "required": [
-        "a",
-        "b",
-        "operation"
+        "url"
       ],
       "type": "object",
-      "title": "Calculate Task"
+      "title": "Load ROI"
+    },
+    "calculate_ndvi": {
+      "additionalProperties": false,
+      "properties": {
+        "band": {
+          "default": "NDVI",
+          "title": "Band",
+          "type": "string",
+          "description": "The band name"
+        },
+        "scale_factor": {
+          "default": 0.0001,
+          "title": "Scale Factor",
+          "type": "number",
+          "description": "The scale factor"
+        },
+        "analysis_scale": {
+          "default": 500.0,
+          "title": "Analysis Scale",
+          "type": "number",
+          "description": "The analysis scale"
+        }
+      },
+      "required": [],
+      "type": "object",
+      "title": "Calculate NDVI"
+    },
+    "draw_ndvi": {
+      "additionalProperties": false,
+      "properties": {
+        "historic_band_title": {
+          "default": "Historic Min-Max",
+          "title": "Historic Band Title",
+          "type": "string",
+          "description": "The title shown in the plot legend for historic band"
+        },
+        "historic_mean_title": {
+          "default": "Historic Mean",
+          "title": "Historic Mean Title",
+          "type": "string",
+          "description": "The title shown in the plot legend for historic mean values"
+        },
+        "layout_style": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/LayoutStyle"
+            }
+          ],
+          "default": null,
+          "title": "Layout Style",
+          "description": "Additional kwargs passed to plotly.go.Figure(layout).",
+          "ecoscope:advanced": true
+        },
+        "upper_lower_band_style": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/PlotStyle"
+            }
+          ],
+          "default": null,
+          "title": "Upper Lower Band Style",
+          "description": "Additional kwargs for upper_lower_band passed to plotly.graph_objects.Scatter.",
+          "ecoscope:advanced": true
+        },
+        "historic_mean_style": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/PlotStyle"
+            }
+          ],
+          "default": null,
+          "title": "Historic Mean Style",
+          "description": "Additional kwargs passed for historic_mean to plotly.graph_objects.Scatter.",
+          "ecoscope:advanced": true
+        },
+        "current_value_style": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/PlotStyle"
+            }
+          ],
+          "default": null,
+          "title": "Current Value Style",
+          "description": "Additional kwargs for current_value passed to plotly.graph_objects.Scatter.",
+          "ecoscope:advanced": true
+        },
+        "time_column": {
+          "default": "img_date",
+          "title": "Time Column",
+          "type": "string"
+        }
+      },
+      "required": [],
+      "type": "object",
+      "title": "Draw NDVI"
     }
   },
   "$defs": {
+    "GoogleEarthEngineConnection": {
+      "properties": {
+        "name": {
+          "title": "Data Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "GoogleEarthEngineConnection",
+      "type": "object"
+    },
     "TemporalGrouper": {
       "oneOf": [
         {
@@ -165,15 +277,184 @@
       "oneOf": [],
       "title": "Category",
       "type": "string"
+    },
+    "AxisStyle": {
+      "properties": {
+        "title": {
+          "default": null,
+          "ecoscope:advanced": true,
+          "title": "Title",
+          "type": "string"
+        },
+        "range": {
+          "default": null,
+          "ecoscope:advanced": true,
+          "items": {
+            "type": "number"
+          },
+          "title": "Range",
+          "type": "array"
+        }
+      },
+      "title": "AxisStyle",
+      "type": "object"
+    },
+    "LayoutStyle": {
+      "properties": {
+        "font_color": {
+          "default": null,
+          "ecoscope:advanced": true,
+          "title": "Font Color",
+          "type": "string"
+        },
+        "font_style": {
+          "default": null,
+          "ecoscope:advanced": true,
+          "title": "Font Style",
+          "type": "string"
+        },
+        "plot_bgcolor": {
+          "default": null,
+          "ecoscope:advanced": true,
+          "title": "Plot Bgcolor",
+          "type": "string"
+        },
+        "showlegend": {
+          "default": null,
+          "ecoscope:advanced": true,
+          "title": "Showlegend",
+          "type": "boolean"
+        },
+        "title": {
+          "default": null,
+          "ecoscope:advanced": true,
+          "title": "Title",
+          "type": "string"
+        },
+        "title_x": {
+          "default": null,
+          "ecoscope:advanced": true,
+          "ge": 0.0,
+          "le": 1.0,
+          "title": "Title X",
+          "type": "number"
+        },
+        "title_y": {
+          "default": null,
+          "ecoscope:advanced": true,
+          "ge": 0.0,
+          "le": 1.0,
+          "title": "Title Y",
+          "type": "number"
+        },
+        "xaxis": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/AxisStyle"
+            }
+          ],
+          "default": null,
+          "ecoscope:advanced": true,
+          "title": "Xaxis"
+        },
+        "yaxis": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/AxisStyle"
+            }
+          ],
+          "default": null,
+          "ecoscope:advanced": true,
+          "title": "Yaxis"
+        }
+      },
+      "title": "LayoutStyle",
+      "type": "object"
+    },
+    "LineStyle": {
+      "properties": {
+        "color": {
+          "default": null,
+          "ecoscope:advanced": true,
+          "title": "Color",
+          "type": "string"
+        },
+        "dash": {
+          "default": null,
+          "ecoscope:advanced": true,
+          "title": "Dash",
+          "type": "string"
+        }
+      },
+      "title": "LineStyle",
+      "type": "object"
+    },
+    "PlotStyle": {
+      "properties": {
+        "xperiodalignment": {
+          "default": null,
+          "ecoscope:advanced": true,
+          "title": "Xperiodalignment",
+          "type": "string"
+        },
+        "marker_colors": {
+          "default": null,
+          "ecoscope:advanced": true,
+          "items": {
+            "type": "string"
+          },
+          "title": "Marker Colors",
+          "type": "array"
+        },
+        "textinfo": {
+          "default": null,
+          "ecoscope:advanced": true,
+          "title": "Textinfo",
+          "type": "string"
+        },
+        "line": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/LineStyle"
+            }
+          ],
+          "default": null,
+          "ecoscope:advanced": true,
+          "title": "Line"
+        },
+        "fillcolor": {
+          "default": null,
+          "ecoscope:advanced": true,
+          "title": "Fillcolor",
+          "type": "string"
+        },
+        "mode": {
+          "default": null,
+          "ecoscope:advanced": true,
+          "title": "Mode",
+          "type": "string"
+        },
+        "name": {
+          "default": null,
+          "ecoscope:advanced": true,
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "title": "PlotStyle",
+      "type": "object"
     }
   },
   "additionalProperties": false,
   "uiSchema": {
     "ui:order": [
       "workflow_details",
+      "gee_client",
       "time_range",
       "groupers",
-      "calculator"
+      "roi",
+      "calculate_ndvi",
+      "draw_ndvi"
     ]
   }
 }
