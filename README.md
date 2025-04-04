@@ -1,69 +1,64 @@
-# Workflow Template Repository
+# NDVI Workflow
 
-This repository contains a template for creating custom workflows. Follow the setup steps below to get started.
+This repository contains an Ecoscope workflow for Normalized Difference Vegetation Index (NDVI), including 
+- Download Region of Interest(ROI) from a URL
+- Calculate NDVI with Google Earth Engine
+- Generate a dashboard with historical comparison
 
-## Setup Steps
 
-1. **Update the project name**
-   
-   Open the `pixi.toml` file and update the `name` field in the `[project]` section:
-   ```toml
-   [project]
-   name = "template" #TODO: update "template" with your project name
+## Run the Workflow
 
-   [tasks.pytest-cli]
-   cmd = "./dev/pytest.sh template 'cli'" #TODO: update "template" with your project name
+1. **Open the ecoscope-workflow-console App**
 
-   [tasks.pytest-snapshot-update]
-   cmd = "./dev/rmrf-snapshots.sh && ./dev/pytest.sh template 'app' 'sequential' --snapshot-update" #TODO: update "template" with your project name
+2. **Load the [NDVI Workflow](https://github.com/ecoscope-platform-workflows-releases/ndvi)**
 
+3. **Update the configuration**   
+   Update the following parameters according to your requirements
+   - time_range
+   - roi:url Update your ROI package to dropbox, set it to be public and put the url here
+
+4. **Set Mock IO**   
+   By default, the workflow will use Mock IO. Leave it on if you don't have Google Earth Engine credentials and want to test the workflow functionality. Note that if you leave the Mock IO on, the above configuration will NOT take effect.
+
+   For production use with real data, click on the button to disable "Mock IO"
+
+5. **Run the workflow and wait for the dashboard to pop up**
+
+
+## Set up Google Earth Engine credentials
+
+1. **Set up Google Earth Engine Project and Authenticate**
+To run the workflow, you need a google earth engine credential with a project id
+
+   a. Sign up for Google Earth Engine at [https://earthengine.google.com/signup/](https://earthengine.google.com/signup/)
+   b. Install the Earth Engine Python API:
+      ```bash
+      pip install earthengine-api
+      ```
+   c. Authenticate with your browser
+      ```bash
+      earthengine authenticate
+      ```
+   d. Initialize the Earth Engine API:
+      ```bash
+      earthengine init
+      ```
+
+2. **Set up environment**
+   ```bash
+   # Google EarthEngine Configuration
+   export ecoscope_workflows__connections__ecoscope_poc__ee_project=<YOUR_GEE_PROJECT_ID>
    ```
 
-2. **Update the workflow ID**
-   
-   Open the `spec.yaml` file and update the `id` field:
-   ```yaml
-   id: your-workflow-id
-   ```
+## Test Steps
 
-3. **Install pixi**
+1. **Install pixi**
    
    If you don't have pixi installed, install it by following the instructions at the [official documentation](https://pixi.sh/latest/).
 
-4. **Compile the workflow**
-   
-   Run the following command to compile your workflow:
-   ```bash
-   pixi run compile
-   ```
-   
-   This will generate a folder called `ecoscope-workflows-<your-workflow-id>-workflow` with your compiled workflow.
-
-5. **Generate your workflow result snapshot**
-   
-   Run the following command to generate your workflow result snapshot:
-   ```bash
-   pixi run pytest-snapshot-update
-   ```
-
-   This will generate a folder called `__results_snapshots__` with an example output.
-
-6. **Test your workflow**
+2. **Test your workflow**
    
    Run the following command to test your workflow:
    ```bash
    pixi run pytest-cli
    ```
-
-## Project Structure
-
-- `pixi.toml`: Contains project configuration including dependencies
-- `spec.yaml`: Contains workflow specifications
-- `test-cases.yaml`: Contains test cases for your workflow
-- `layout.json`: Contains the dashboard layout settings
-- `dev`: Contains scripts required for development
-
-## Additional Resources
-
-- [Ecoscope Core Library](https://github.com/wildlife-dynamics/ecoscope)
-- [Pixi Documentation](https://pixi.sh/latest/)

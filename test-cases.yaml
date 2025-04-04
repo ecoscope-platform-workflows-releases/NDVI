@@ -3,8 +3,8 @@ value-grouper:
   description: Value Grouper Test Case
   params:
     workflow_details:
-      name: "NDVI Workflow"
-      description: "NDVI workflow"
+      name: "Normalized Difference Vegetation Index Workflow"
+      description: "Normalized Difference Vegetation Index workflow"
     gee_client:
       data_source:
         name: "ecoscope_poc"
@@ -23,8 +23,8 @@ month-grouper: # TODO: copied from value-grouper as a placeholder for console ap
   description: Value Grouper Test Case
   params:
     workflow_details:
-      name: "NDVI Workflow"
-      description: "NDVI workflow"
+      name: "Normalized Difference Vegetation Index Workflow"
+      description: "Normalized Difference Vegetation Index workflow"
     gee_client:
       data_source:
         name: "ecoscope_poc"
@@ -43,8 +43,8 @@ all-grouper: # TODO: copied from value-grouper as a placeholder for console app
   description: Value Grouper Test Case
   params:
     workflow_details:
-      name: "NDVI Workflow"
-      description: "NDVI workflow"
+      name: "Normalized Difference Vegetation Index Workflow"
+      description: "Normalized Difference Vegetation Index workflow"
     gee_client:
       data_source:
         name: "ecoscope_poc"
