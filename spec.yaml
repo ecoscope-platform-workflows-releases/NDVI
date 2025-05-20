@@ -1,10 +1,10 @@
 id: ndvi
 requirements:
   - name: ecoscope-workflows-core
-    version: "*"
+    version: 0.1.7
     channel: file:///tmp/ecoscope-workflows/release/artifacts/
   - name: ecoscope-workflows-ext-ecoscope
-    version: "*"
+    version: 0.1.7 
     channel: file:///tmp/ecoscope-workflows/release/artifacts/
 rjsf-overrides:
   $defs:
