@@ -2,11 +2,12 @@
 
 
 FROM bitnami/minideb:bullseye AS fetch
-RUN apt-get update && apt-get install -y curl
+RUN apt-get update && apt-get install -y curl ca-certificates
 RUN curl -fsSL https://pixi.sh/install.sh | PIXI_VERSION=latest bash
 
 FROM bitnami/minideb:bullseye AS install
 COPY --from=fetch /root/.pixi /root/.pixi
+COPY --from=fetch /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 ENV PATH="/root/.pixi/bin:$PATH"
 
 # if local release artifacts are required by the spec, then we expect them to
@@ -18,30 +19,12 @@ RUN rm -rf .tmp
 
 WORKDIR /app
 COPY . .
-RUN pixi install -e default --locked
+RUN pixi install -e default -e runner --locked
 
 FROM install AS app
 ENV PORT 8080
 ENV CONCURRENCY 1
 ENV UVICORN_TIMEOUT 600
-CMD pixi run -e default \
-    uvicorn --host 0.0.0.0 --port $PORT --workers $CONCURRENCY --timeout-graceful-shutdown $UVICORN_TIMEOUT ecoscope_workflows_ndvi_workflow.app:app
-
-# FROM python:3.10-slim-buster AS unzip_proxy
-# RUN apt-get update && apt-get install -y \
-#     zip \
-#     && rm -rf /var/lib/apt/lists/*
-# ENV APP_HOME /lithops
-# WORKDIR $APP_HOME
-# assumes the build context is running the lithops runtime build command
-# in a context with the same lithops version as the one in the container (?)
-# COPY lithops_cloudrun.zip .
-# RUN unzip lithops_cloudrun.zip && rm lithops_cloudrun.zip
-
-# FROM install AS worker
-# COPY --from=unzip_proxy /lithops /lithops
-# ENV PORT 8080
-# ENV CONCURRENCY 1
-# ENV TIMEOUT 600
-# WORKDIR /lithops
-# CMD gunicorn --bind :$PORT --workers $CONCURRENCY --timeout $TIMEOUT lithopsproxy:proxy
+CMD ECOSCOPE_WORKFLOWS_MATCHSPEC_OVERRIDE=ecoscope-workflows-ndvi-workflow \
+    pixi run -e runner \
+    uvicorn --host 0.0.0.0 --port $PORT --workers $CONCURRENCY --timeout-graceful-shutdown $UVICORN_TIMEOUT ecoscope_workflows_runner.app:app

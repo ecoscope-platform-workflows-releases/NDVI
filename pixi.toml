@@ -4,17 +4,17 @@ yq = '*'
 
 [dependencies.ecoscope-workflows-core]
 channel = 'https://repo.prefix.dev/ecoscope-workflows/'
-version = '0.0.71'
+version = '0.1.7'
 
 [dependencies.ecoscope-workflows-ext-ecoscope]
 channel = 'https://repo.prefix.dev/ecoscope-workflows/'
-version = '0.0.71'
+version = '0.1.7'
 
 
 [project]
 channels = ['https://repo.prefix.dev/ecoscope-workflows/', 'conda-forge']
 name = 'ndvi'
-platforms = ['linux-64', 'linux-aarch64', 'osx-arm64']
+platforms = ['linux-64', 'osx-arm64']
 
 [tasks]
 [tasks.compile]

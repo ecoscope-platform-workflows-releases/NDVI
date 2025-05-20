@@ -29,6 +29,9 @@ class Roi(BaseModel):
         extra="forbid",
     )
     url: str = Field(..., description="The path to ROI gpkg file", title="Url")
+    roi_column: Optional[str] = Field(
+        "name", description="The column name of the ROI name", title="Roi Column"
+    )
     roi_name: Optional[str] = Field(None, description="The ROI name", title="Roi Name")
     layer_name: Optional[str] = Field(
         None, description="The layer name", title="Layer Name"
@@ -66,10 +69,13 @@ class AxisStyle(BaseModel):
 
 
 class LayoutStyle(BaseModel):
+    font_size: Optional[float] = Field(None, title="Font Size")
     font_color: Optional[str] = Field(None, title="Font Color")
     font_style: Optional[str] = Field(None, title="Font Style")
     plot_bgcolor: Optional[str] = Field(None, title="Plot Bgcolor")
     showlegend: Optional[bool] = Field(None, title="Showlegend")
+    hovermode: Optional[str] = Field(None, title="Hovermode")
+    legend_title: Optional[str] = Field(None, title="Legend Title")
     title: Optional[str] = Field(None, title="Title")
     title_x: Optional[float] = Field(None, title="Title X")
     title_y: Optional[float] = Field(None, title="Title Y")
@@ -80,6 +86,7 @@ class LayoutStyle(BaseModel):
 class LineStyle(BaseModel):
     color: Optional[str] = Field(None, title="Color")
     dash: Optional[str] = Field(None, title="Dash")
+    shape: Optional[str] = Field(None, title="Shape")
 
 
 class PlotStyle(BaseModel):
