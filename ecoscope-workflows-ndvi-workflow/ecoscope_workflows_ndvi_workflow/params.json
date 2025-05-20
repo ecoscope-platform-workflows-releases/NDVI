@@ -92,6 +92,19 @@
           "type": "string",
           "description": "The path to ROI gpkg file"
         },
+        "roi_column": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": "name",
+          "title": "Roi Column",
+          "description": "The column name of the ROI name"
+        },
         "roi_name": {
           "anyOf": [
             {
@@ -301,6 +314,12 @@
     },
     "LayoutStyle": {
       "properties": {
+        "font_size": {
+          "default": null,
+          "ecoscope:advanced": true,
+          "title": "Font Size",
+          "type": "number"
+        },
         "font_color": {
           "default": null,
           "ecoscope:advanced": true,
@@ -324,6 +343,18 @@
           "ecoscope:advanced": true,
           "title": "Showlegend",
           "type": "boolean"
+        },
+        "hovermode": {
+          "default": null,
+          "ecoscope:advanced": true,
+          "title": "Hovermode",
+          "type": "string"
+        },
+        "legend_title": {
+          "default": null,
+          "ecoscope:advanced": true,
+          "title": "Legend Title",
+          "type": "string"
         },
         "title": {
           "default": null,
@@ -383,6 +414,12 @@
           "default": null,
           "ecoscope:advanced": true,
           "title": "Dash",
+          "type": "string"
+        },
+        "shape": {
+          "default": null,
+          "ecoscope:advanced": true,
+          "title": "Shape",
           "type": "string"
         }
       },

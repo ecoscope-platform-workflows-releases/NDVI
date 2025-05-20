@@ -119,6 +119,7 @@ groupers = (
 
 roi_params = dict(
     url=...,
+    roi_column=...,
     roi_name=...,
     layer_name=...,
 )
