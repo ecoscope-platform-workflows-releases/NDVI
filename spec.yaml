@@ -1,11 +1,11 @@
 id: ndvi
 requirements:
   - name: ecoscope-workflows-core
-    version: 0.1.7
-    channel: file:///tmp/ecoscope-workflows/release/artifacts/
+    version: "0.2.*"
+    channel: https://repo.prefix.dev/ecoscope-workflows/
   - name: ecoscope-workflows-ext-ecoscope
-    version: 0.1.7 
-    channel: file:///tmp/ecoscope-workflows/release/artifacts/
+    version: "0.2.*"
+    channel: https://repo.prefix.dev/ecoscope-workflows/
 rjsf-overrides:
   $defs:
     ValueGrouper.oneOf: [

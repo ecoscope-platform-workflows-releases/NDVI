@@ -476,6 +476,28 @@
           "ecoscope:advanced": true,
           "title": "Name",
           "type": "string"
+        },
+        "width": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            }
+          ],
+          "default": null,
+          "ecoscope:advanced": true,
+          "title": "Width"
+        },
+        "xperiod": {
+          "default": null,
+          "ecoscope:advanced": true,
+          "title": "Xperiod",
+          "type": "string"
         }
       },
       "title": "PlotStyle",

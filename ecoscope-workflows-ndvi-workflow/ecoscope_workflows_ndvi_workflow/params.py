@@ -97,6 +97,8 @@ class PlotStyle(BaseModel):
     fillcolor: Optional[str] = Field(None, title="Fillcolor")
     mode: Optional[str] = Field(None, title="Mode")
     name: Optional[str] = Field(None, title="Name")
+    width: Optional[Union[int, List[int]]] = Field(None, title="Width")
+    xperiod: Optional[str] = Field(None, title="Xperiod")
 
 
 class GeeClient(BaseModel):
