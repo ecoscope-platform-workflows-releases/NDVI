@@ -47,7 +47,7 @@ To run the workflow, you need a google earth engine credential with a project id
 2. **Set up environment**
    ```bash
    # Google EarthEngine Configuration
-   export ecoscope_workflows__connections__ecoscope_poc__ee_project=<YOUR_GEE_PROJECT_ID>
+   export ecoscope_workflows__connections__earthengine__ecoscope_poc__ee_project=<YOUR_GEE_PROJECT_ID>
    ```
 
 ## Test Steps
