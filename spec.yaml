@@ -14,8 +14,8 @@ metadata:
       email: alexm@earthranger.com
       role: reviewer
   license: BSD-3-Clause
-  repository: https://github.com/wildlife-dynamics/wt-ndvi
-  documentation: https://github.com/wildlife-dynamics/wt-ndvi#readme
+  repository: https://github.com/wildlife-dynamics/ndvi
+  documentation: https://github.com/wildlife-dynamics/ndvi#readme
   readme: README.md
   keywords: [ndvi, vegetation, gee, earthranger, raster]
   thumbnail: resources/thumbnail.png
