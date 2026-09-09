@@ -109,7 +109,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/xorg-libice-1.1.2-h280c20c_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/xorg-libsm-1.2.6-h0d788c3_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/xorg-libx11-1.8.13-he1eb515_1.conda
-      - conda: https://conda.anaconda.org/conda-forge/linux-64/xorg-libxau-1.0.12-hb03c661_2.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/xorg-libxau-1.0.12-h7cc23a3_2.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/xorg-libxcomposite-0.4.7-hb03c661_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/xorg-libxcursor-1.2.3-hb9d3cd8_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/xorg-libxdamage-1.1.6-hb9d3cd8_0.conda
@@ -332,7 +332,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/win-64/xorg-libice-1.1.2-hd74fcf3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/xorg-libsm-1.2.6-hd74fcf3_1.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/xorg-libx11-1.8.13-hfa52320_1.conda
-      - conda: https://conda.anaconda.org/conda-forge/win-64/xorg-libxau-1.0.12-hba3369d_2.conda
+      - conda: https://conda.anaconda.org/conda-forge/win-64/xorg-libxau-1.0.12-hfa92662_2.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/xorg-libxdmcp-1.1.5-hba3369d_2.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/xorg-libxext-1.3.7-hfa92662_1.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/xorg-libxpm-3.5.19-hba3369d_0.conda
@@ -1585,6 +1585,7 @@ packages:
   - __glibc >=2.17,<3.0.a0
   - python_abi 3.14.* *_cp314
   license: MIT
+  license_family: MIT
   run_exports: {}
   size: 160103
   timestamp: 1788881212732
@@ -1689,19 +1690,19 @@ packages:
     - xorg-libx11 >=1.8.13,<2.0a0
   size: 839578
   timestamp: 1787087012372
-- conda: https://conda.anaconda.org/conda-forge/linux-64/xorg-libxau-1.0.12-hb03c661_2.conda
-  sha256: cbf891f6cc1a859347680af1c8562bc6b033bf182a2a3bb536016932be3206de
-  md5: f06ef439c280a5f90b8bf62355008dbc
+- conda: https://conda.anaconda.org/conda-forge/linux-64/xorg-libxau-1.0.12-h7cc23a3_2.conda
+  sha256: 3ec065b94554dc48a4ca582a960a5484bc166b26e83ce0954653e08d17e8bd53
+  md5: da33efee1a93603d92e06d4a2b68def6
   depends:
   - __glibc >=2.17,<3.0.a0
-  - libgcc >=14
+  - libgcc >=15
   license: MIT
   license_family: MIT
   run_exports:
     weak:
     - xorg-libxau >=1.0.12,<2.0a0
-  size: 16419
-  timestamp: 1786381001122
+  size: 18793
+  timestamp: 1788960512381
 - conda: https://conda.anaconda.org/conda-forge/linux-64/xorg-libxcomposite-0.4.7-hb03c661_0.conda
   sha256: 048c103000af9541c919deef03ae7c5e9c570ffb4024b42ecb58dbde402e373a
   md5: f2ba4192d38b6cef2bb2c25029071d90
@@ -1890,6 +1891,7 @@ packages:
   - libgcc >=15
   - __glibc >=2.17,<3.0.a0
   license: MIT
+  license_family: MIT
   run_exports: {}
   size: 596340
   timestamp: 1788874111132
@@ -3044,6 +3046,7 @@ packages:
   - __osx >=11.0
   - python_abi 3.14.* *_cp314
   license: MIT
+  license_family: MIT
   run_exports: {}
   size: 127818
   timestamp: 1788881217705
@@ -3828,6 +3831,7 @@ packages:
   - ucrt >=10.0.20348.0
   - python_abi 3.14.* *_cp314
   license: MIT
+  license_family: MIT
   run_exports: {}
   size: 118716
   timestamp: 1788881215870
@@ -3952,11 +3956,11 @@ packages:
     - xorg-libx11 >=1.8.13,<2.0a0
   size: 954803
   timestamp: 1787087422301
-- conda: https://conda.anaconda.org/conda-forge/win-64/xorg-libxau-1.0.12-hba3369d_2.conda
-  sha256: 892ad69b1a9ecc3903ed5a1b18fa097013eaf462eeed3c6ff31bf5c12e71e84b
-  md5: 87aee04978ab77bf4c0f42b983c216cc
+- conda: https://conda.anaconda.org/conda-forge/win-64/xorg-libxau-1.0.12-hfa92662_2.conda
+  sha256: b9f063792e4d50ef2669c30dfc4ba14aefb4fdc37e384241a71093bee0493ad1
+  md5: 68403004c805ce03b71a5889a4c47fa1
   depends:
-  - libgcc >=14
+  - libgcc >=15
   - libwinpthread >=12.0.0.r4.gg4f2fc60ca
   - ucrt >=10.0.20348.0
   license: MIT
@@ -3964,8 +3968,8 @@ packages:
   run_exports:
     weak:
     - xorg-libxau >=1.0.12,<2.0a0
-  size: 110446
-  timestamp: 1786381242485
+  size: 112892
+  timestamp: 1788960775276
 - conda: https://conda.anaconda.org/conda-forge/win-64/xorg-libxdmcp-1.1.5-hba3369d_2.conda
   sha256: 21b11bb98c41ece4ce6069d86d826b50b3d73020fb631b97e59a0521dd9d08a1
   md5: 0e21a45f1bb429b6e35e82631e60554a

@@ -13,11 +13,40 @@ metadata:
     - name: Alex Morling
       email: alexm@earthranger.com
       role: reviewer
+  outputs:
+    - name: NDVI Dashboard
+      type: dashboard
+      description: >-
+        A dashboard that visualizes NDVI trends and maps for the selected regions
+        of interest.
+      indicators:
+        - name: NDVI
+    - name: NDVI Map
+      type: map
+      description: >-
+        An interactive map displaying NDVI values for the selected regions of
+        interest.
+      indicators:
+        - name: NDVI
+    - name: NDVI Trend
+      type: plot
+      description: >-
+        A line plot that visualizes NDVI trends over time for the selected regions
+        of interest.
+      indicators:
+        - name: NDVI
+    - name: NDVI Data
+      type: file
+      description: >-
+        A file containing the calculated NDVI data for the selected regions of
+        interest.
+      indicators:
+        - name: NDVI
   license: BSD-3-Clause
   repository: https://github.com/wildlife-dynamics/ndvi
   documentation: https://github.com/wildlife-dynamics/ndvi#readme
   readme: README.md
-  keywords: [ndvi, vegetation, gee, earthranger, raster]
+  keywords: [ndvi, vegetation, gee]
   thumbnail: resources/thumbnail.png
 requirements:
   - name: ecoscope-platform
