@@ -5,6 +5,7 @@ on:
     types: [opened, reopened, synchronize, closed]
     branches:
       - 'ecoscope-web'
+      - 'patch-*'
 
 jobs:
   generate-tag:
@@ -47,6 +48,16 @@ jobs:
             echo "Tag ${{ steps.create_tag.outputs.result }} is valid, because it adheres to vMAJ.MIN.PATCH format."
           else
             echo "Tag ${{ steps.create_tag.outputs.result }} is not valid. It must adhere to vMAJ.MIN.PATCH format."
+            exit 1
+          fi
+      - name: If this is a PR to a patch branch, ensure the patch version is not 0
+        if: startsWith(github.base_ref, 'patch-')
+        run: |
+          patch_version=$(echo "${{ steps.create_tag.outputs.result }}" | cut -d '.' -f 3)
+          if [ "$patch_version" -ne 0 ]; then
+            echo "Patch version is not 0. This is an acceptable PR to a patch branch."
+          else
+            echo "Patch version is 0. Please ensure that the patch version is incremented before merging this PR."
             exit 1
           fi
 
